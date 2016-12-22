@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.11.1.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<input type="button" name="" id="input1" value="点击" />
+		<div id="div1">
+			0
+		</div>
+		<script type="text/javascript">
+			var temp=0;
+			$("#input1").click(function(){
+				$("#div1").animate({num:"auto"},{duration:1000,easing:"linear",step:function(a,b){
+					//282828
+					temp=parseInt(b.pos*282828)
+					$("#div1").html(temp);
+					
+				},complete:function(){
+					alert("到了")
+				}})
+//				
+			});
+		</script>
+	</body>
+</html>

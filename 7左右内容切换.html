@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.11.1.js" type="text/javascript"></script>
+		<style type="text/css">
+			.textarea1,.textarea2{width:100px;height:100px;border:1px solid #333;padding:10px;overflow: auto;}
+			.textarea1,.textarea2,input{float:left;}
+			input{margin:40px 5px 0 5px;}
+		</style>
+	</head>
+	<body>
+		<div class="textarea1">
+			<p>1111</p><p>222</p><p>333</p><p>444</p><p>55555</p>
+		</div>
+		</textarea>
+		<input type="button" name="" id="left" value="←右边文字移向左边" />
+		<input type="button" name="" id="right" value="→左边文字移向右边" />
+		<div class="textarea2">
+			<p>666</p><p>777</p><p>888</p>
+		</div>
+		
+		
+		<script type="text/javascript">
+			
+			$("#left").click(function(){
+				$(".textarea2").find("p").last().appendTo(".textarea1");
+			})
+			$("#right").click(function(){
+				$(".textarea1").find("p").last().appendTo(".textarea2");
+			})
+		</script>
+	</body>
+</html>

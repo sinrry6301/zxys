@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.11.1.js" type="text/javascript"></script>
+	</head>
+	<body>
+			<input type="radio" name="1" id="" value="管理员" checked/>管理员
+			<input type="radio" name="1" id="" value="普通用户"/>普通用户
+		<a href="javascript:void(0);"><span id="spanid">编辑此处</span></a>
+		
+		<script type="text/javascript">
+			$("input").click(function(){
+				if($(this).val()=="管理员"){
+					$("#spanid").wrap("<a href='javascript:void(0)'></a>");
+				}else if($(this).val()=="普通用户"){
+					$("#spanid").unwrap();
+				}
+			})
+		</script>
+	</body>
+</html>

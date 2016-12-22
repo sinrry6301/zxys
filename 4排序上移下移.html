@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			em{font-style:normal;margin-right:10px;color:#cc0000;font-weight: bold;}
+			ul li{margin-bottom:10px;list-style: none;}
+			input{margin-left:10px;}
+		</style>
+		<script src="js/jquery-1.11.1.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<ul>
+			<li><em>第1行</em><input type="button" value="上移" class="up" /><input type="button" value="下移" class="down" /></li>
+			<li><em>第2行</em><input type="button" value="上移" class="up"  /><input type="button" value="下移"class="down"  /></li>
+			<li><em>第3行</em><input type="button" value="上移"  class="up" /><input type="button" value="下移" class="down" /></li>
+			<li><em>第4行</em><input type="button" value="上移"  class="up" /><input type="button" value="下移" class="down" /></li>
+			<li><em>第5行</em><input type="button" value="上移"  class="up" /><input type="button" value="下移" class="down" /></li>
+			<li><em>第6行</em><input type="button" value="上移"  class="up" /><input type="button" value="下移" class="down" /></li>
+		</ul>
+		
+		<script type="text/javascript">
+			var index=0;
+			$(".up").click(function(){
+				index=$(this).closest("li").index()+1;//找到的当前层的index序列
+				$(this).closest("li").insertBefore($(this).closest("li").prev());//当前层上面的节点,并剪切插入到它上边
+			});
+			$(".down").click(function(){
+				index=$(this).closest("li").index()+1;//找到的当前层的index序列
+				$(this).closest("li").insertAfter($(this).closest("li").next());//当前层上面的节点,并剪切插入到它下边
+			});
+		</script>
+	</body>
+</html>

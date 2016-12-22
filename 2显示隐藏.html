@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.11.1.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<input type="button" name="" id="obtn" value="点击" />
+		<br />
+		<span>1</span>
+		<span>2</span>
+		<span>3</span>
+		
+		
+		<script type="text/javascript">
+			var onOff=true;
+			$("#obtn").click(function(){
+				if(onOff){
+					$("span").hide();
+				}else{
+					$("span").show();
+				}
+				onOff=!onOff;//设置false也一样
+			});
+			
+		</script>
+	</body>
+</html>
