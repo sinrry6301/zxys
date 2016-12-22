@@ -12,21 +12,21 @@
 
 
 $(function(){
-	$(".box").find("input").click(function(){
-		$.ajax({
-		type:"post",
-		url:"php/data.php",
-		async:true,
-		success:function(data){
-			if(data=0){
-				$("#div1 div").eq(data).html(data);
-			}
-		}
-	});
-	$(this).attr("class","on").siblings("input").attr("class","");
+//	$(".box").find("input").click(function(){
+//		$.ajax({
+//		type:"post",
+//		url:"php/data.php",
+//		async:true,
+//		success:function(data){
+//			if(data=0){
+//				$("#div1 div").eq(data).html(data);
+//			}
+//		}
+//	});
+//
+//	});
+		$(this).attr("class","on").siblings("input").attr("class","");
 	$(".box").find("div").eq($(this).index("input")).attr("class","active").siblings("div").attr("class","");
-	});
-	
 	
 });
 
