@@ -14,10 +14,12 @@
 $(function(){
 	$("#div1").find("input").click(function(){
 		$.getJSON({
-		url:"https://sinrry6301.github.io/zxys/php/data.php",
+		url:"https://sinrry6301.github.io/zxys/php/data.php?callback=?",
 		success:function(data){
+			consloe.log(data);
+			console.log(111111);
 			if(data==0){
-				console.log(data)
+				console.log(data);
 			}
 		}
 	});
