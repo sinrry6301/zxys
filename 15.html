@@ -12,15 +12,14 @@
 
 
 $(function(){
-	$(".box").find("input").click(function(){
+	$("#div1").find("input").click(function(){
 		$.ajax({
 		type:"post",
-		url:"https://github.com/sinrry6301/zxys/tree/master/php/data.php?callback=?",
+		url:"https://sinrry6301.github.io/zxys/php/data.php/data.php?callback=?",
 		success:function(data){
-			console.log(data);
-//			if(data=0){
-//				$("#div1 div").eq(data).html(data);
-//			}
+			if(data==0){
+				console.log(data)
+			}
 		}
 	});
 	$(this).attr("class","on").siblings("input").attr("class","");
