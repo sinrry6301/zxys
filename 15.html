@@ -15,10 +15,11 @@ $(function(){
 	$("#div1").find("input").click(function(){
 		$.getJSON({
 		url:"https://sinrry6301.github.io/zxys/php/data.php?callback=?",
-		success:function(data){
-			consloe.log(data.num);
+		data:$("#div1").html(),
+		success:function(callback){
+			consloe.log(callback.num);
 			console.log(111111);
-			if(data.num==0){
+			if(callback.num==0){
 				console.log(data.num);
 			}
 		}
