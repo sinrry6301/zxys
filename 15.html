@@ -13,10 +13,7 @@
 
 $(function(){
 	$("#div1").find("input").click(function(){
-		$.getJSON({
-		"https://sinrry6301.github.io/zxys/php/data.php?callback=?",
-		{"rand":new Date().getTime()},
-		function(callback){
+		$.getJSON({"https://sinrry6301.github.io/zxys/php/data.php?callback=?",{"rand":new Date().getTime()},function(callback){
 			consloe.log(callback.num);
 			console.log(111111);
 			if(callback.num==0){
