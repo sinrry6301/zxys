@@ -13,11 +13,11 @@
 
 $(function(){
 	$("#div1").find("input").click(function(){
-		$.getJSON("https://sinrry6301.github.io/zxys/php/data.php?callback=?",{"callback":"callback","rand":new Date().getTime()},function(callback){
-			console.log(callback.num);
-			console.log(111111);
+		$.getJSON("https://sinrry6301.github.io/zxys/php/data.php?callback=?",{"rand":new Date().getTime()},function(callback){
+//			console.log(callback.num);
+//			console.log(111111);
 			if(callback.num==0){
-				console.log(data.num);
+				console.log(callback.num);
 			}
 		}
 	);
