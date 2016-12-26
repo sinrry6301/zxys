@@ -13,7 +13,7 @@
 $(function(){
 	var num=0;
 	$("#div1").find("input").click(function(){
-		$.getJSON("http://localhost:8080/data.php?callback=?",{"num":num,"rand":new Date().getTime()},function(callback){
+		$.getJSON("https://localhost:8080/data.php?callback=?",{"num":0,"rand":new Date().getTime()},function(callback){
 //			console.log(callback.num);
 //			console.log(111111);
 			if(callback.num==0){
