@@ -17,16 +17,31 @@
 		
 		<script type="text/javascript">
 			var index=0;
+			var onOff=true;
+			var timer=null;
 			$("div").mouseover(function(){
-				$(this).css("background","aqua");
-				if($(this).attr("background","aqua")){
-					$(this).prevAll().css("background","aqua");
-				} 
+				if(onOff){
+					clearTimeout(timer);
+					var that=$(this).index();
+					$("div").each(function(i){
+						if(that >= i){
+							$(this).css("background","aqua");
+						}else{
+							$(this).css("background","#cc0000");
+						}
+					});
+				}
 			});
 			$("div").mouseout(function(){
-				$(this).css("background","");
+				if(onOff){
+					timer=setTimeout(function(){
+						$("div").css("background","#cc0000");
+					},1000)
+				}
 			});
 			$("div").click(function(){
+				onOff=false;
+				clearTimeout(timer);
 				$("div").eq($(this).index()+1).prevAll().css("background","aqua");
 				alert("评"+(($(this).index())+1)+"分");
 			});

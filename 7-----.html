@@ -7,6 +7,7 @@
 		<style type="text/css">
 			.textarea1,.textarea2{width:100px;height:100px;border:1px solid #333;padding:10px;overflow: auto;}
 			.textarea1,.textarea2,input{float:left;}
+			.active{ background: #CC0000;}
 			input{margin:40px 5px 0 5px;}
 		</style>
 	</head>
@@ -15,20 +16,42 @@
 			<p>1111</p><p>222</p><p>333</p><p>444</p><p>55555</p>
 		</div>
 		</textarea>
-		<input type="button" name="" id="left" value="←右边文字移向左边" />
-		<input type="button" name="" id="right" value="→左边文字移向右边" />
+		<input type="button" name="1" id="left" value="←" />
+		<input type="button" name="2" id="right" value="→" />
 		<div class="textarea2">
 			<p>666</p><p>777</p><p>888</p>
 		</div>
 		
 		
 		<script type="text/javascript">
-			
+			var index=0;
+			var index1=0;
+			$(".textarea1 p").click(function(){
+				index=$(this).index();
+				$(this).addClass("active");
+			});
+			$(".textarea2 p").click(function(){
+				index1=$(this).index();
+				$(this).toggleClass("active");
+			})
 			$("#left").click(function(){
-				$(".textarea2").find("p").last().appendTo(".textarea1");
+				if($(".textarea2").find("p").eq(index1).attr("class","active")){
+					$(".textarea1").append($(".textarea2").find("p").eq(index1));
+					$(".textarea1").find("p").removeClass("active");
+				}else{
+					return false;
+				}
+				
 			})
 			$("#right").click(function(){
-				$(".textarea1").find("p").last().appendTo(".textarea2");
+				if($(".textarea1").find("p").eq(index).attr("class","active")){
+					$(".textarea2").append($(".textarea1").find("p").eq(index));
+					$(".textarea2").find("p").removeClass("active");
+					
+				}else{
+					return false;
+				}
+
 			})
 		</script>
 	</body>
