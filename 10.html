@@ -13,14 +13,15 @@ $(function(){
 var disX=0;
 var disY=0;
 $("#div1").mousedown(function(ev){
-	disX=ev.pageX-$(this).offset().top;
-	disY=ev.pageX-$(this).offset().left;
+	disX=ev.pageX-$(this).offset().left;  
+	disY=ev.pageY-$(this).offset().top;
 //	if( $('#div1')[0].setCapture ){
 //			$('#div1')[0].setCapture();
 //		}
 	$(document).mousemove(function(ev){
 		$("#div1").css("left",ev.pageX - disX);
 		$("#div1").css("top",ev.pageY-disY);
+		return false;
 	});
 	$(document).mouseup(function(){
 		$(this).off();
@@ -34,6 +35,6 @@ $("#div1").mousedown(function(ev){
 </head>
 
 <body style="height:2000px">
-<div id="div1">11111111111</div>
+<div id="div1"></div>
 </body>
 </html>
