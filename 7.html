@@ -15,43 +15,52 @@
 		<div class="textarea1">
 			<p>1111</p><p>222</p><p>333</p><p>444</p><p>55555</p>
 		</div>
-		<input type="button" name="1" id="left" value="←" />
-		<input type="button" name="2" id="right" value="→" />
+		<input type="button" name="1" id="left" value="←"  from=".textarea2" to=".textarea1"/>
+		<input type="button" name="2" id="right" value="→"  from=".textarea1" to=".textarea2"/>
 		<div class="textarea2">
 			<p>666</p><p>777</p><p>888</p>
 		</div>
 		
 		
 		<script type="text/javascript">
-			var index=0;
-			var index1=0;
-			$(".textarea1 p").click(function(){
-				index=$(this).index();
-				$(this).addClass("active");
+			//第一种方法：
+			//			var index=0;
+			//			var index1=0;
+			//			$(".textarea1 p").click(function(){
+			//				index=$(this).index();
+			//				$(this).toggleClass("active");
+			//			});
+			//			$(".textarea2 p").click(function(){
+			//				index1=$(this).index();
+			//				$(this).toggleClass("active");
+			//			})
+			//			$("#left").click(function(){
+			//				if($(".textarea2 .active")){
+			//					$(".textarea1").append($(".textarea2 .active"));
+			//					$(".textarea1").find("p").removeClass("active");
+			//				}else{
+			//					return false;
+			//				}
+			//				
+			//			})
+			//			$("#right").click(function(){
+			//				
+			//				if($(".textarea1 .active")){
+			//					$(".textarea2").append($(".textarea1 .active"));
+			//					$(".textarea2").find("p").removeClass("active");
+			//				}else{
+			//					return false;
+			//				}
+			//
+			//			})
+			
+			//第二种方法：
+			$("div p").click(function(){
+				$(this).toggleClass("active");
 			});
-			$(".textarea2 p").click(function(){
-				index1=$(this).index();
-				$(this).addClass("active");
-			})
-			$("#left").click(function(){
-				if($(".textarea2 .active")){
-					$(".textarea1").append($(".textarea2 .active"));
-					$(".textarea1").find("p").removeClass("active");
-				}else{
-					return false;
-				}
-				
-			})
-			$("#right").click(function(){
-				
-				if($(".textarea1 .active")){
-					$(".textarea2").append($(".textarea1 .active"));
-					$(".textarea2").find("p").removeClass("active");
-				}else{
-					return false;
-				}
-
-			})
+			$("input").click(function(){
+				$($(this).attr("from")).find(".active").appendTo($($(this).attr("to"))).removeClass("active");
+			});
 		</script>
 	</body>
 </html>
