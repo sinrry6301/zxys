@@ -15,7 +15,6 @@
 		<div class="textarea1">
 			<p>1111</p><p>222</p><p>333</p><p>444</p><p>55555</p>
 		</div>
-		</textarea>
 		<input type="button" name="1" id="left" value="←" />
 		<input type="button" name="2" id="right" value="→" />
 		<div class="textarea2">
@@ -32,11 +31,11 @@
 			});
 			$(".textarea2 p").click(function(){
 				index1=$(this).index();
-				$(this).toggleClass("active");
+				$(this).addClass("active");
 			})
 			$("#left").click(function(){
-				if($(".textarea2").find("p").eq(index1).attr("class","active")){
-					$(".textarea1").append($(".textarea2").find("p").eq(index1));
+				if($(".textarea2 .active")){
+					$(".textarea1").append($(".textarea2 .active"));
 					$(".textarea1").find("p").removeClass("active");
 				}else{
 					return false;
@@ -44,10 +43,10 @@
 				
 			})
 			$("#right").click(function(){
-				if($(".textarea1").find("p").eq(index).attr("class","active")){
-					$(".textarea2").append($(".textarea1").find("p").eq(index));
+				
+				if($(".textarea1 .active")){
+					$(".textarea2").append($(".textarea1 .active"));
 					$(".textarea2").find("p").removeClass("active");
-					
 				}else{
 					return false;
 				}
