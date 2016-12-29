@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>缓动版焦点图</title>
+<title>缓动版焦点图-普通</title>
 <style>
 body,ul,ol{margin:0;padding:0;}
 li{ list-style:none;}
@@ -20,13 +20,13 @@ ol .active{ background:#f60; color:#fff;}
 $(function(){
 	var $oli=$("ol li");
 	var num=0;
-	var temp=0;
 	var timer=null;
 	clearInterval(timer);
 	timer=setInterval(goon,2000);
 	$("ol").delegate("li","mouseover",function(){
 		clearInterval(timer);
 		$(this).attr("class","active").siblings("li").attr("class","");
+		
 		$("ul").stop().animate({top:-$("#box").height()*($(this).index())},1000);
 		num=$(this).index();
 	});
