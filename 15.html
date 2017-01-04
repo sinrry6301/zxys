@@ -20,7 +20,7 @@
 		<script>
 			$(function() {
 				var num=0;
-				$.getJSON("http://localhost:8080/data.php?callback=?", {num:0,
+				$.getJSON("http://192.168.51.30:8080/php/data.php?callback=?", {num:0,
 					"rand": new Date().getTime()
 				}, function(callback) {
 					if(num == 0) {

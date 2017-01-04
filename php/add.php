@@ -1,11 +1,8 @@
 <?PHP
-
-	$a = $_POST["val"];
-	
+	$a=$_GET["val"];
 	$arr=array();
-	$arr["mainId"]="111111";  
+//	$arr["mainId"]="22222222222";  
 	$arr["text"]="$a";  
 	
 	echo json_encode($arr); 
-
 ?>
