@@ -1,8 +1,8 @@
 <?PHP
 	$a=$_GET["val"];
 	$arr=array();
-//	$arr["mainId"]="22222222222";  
-	$arr["text"]="$a";  
+	$arr["mainId"]="44444";  
+	$arr["text"]=0;  
 	
-	echo json_encode($arr); 
+	echo $_REQUEST['callback'].'(' . json_encode($arr) .')'; 
 ?>

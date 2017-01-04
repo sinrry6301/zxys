@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>评论发布（所有评论可加载更多）</title>
+<script src="js/jquery-1.11.1.js"></script>
+<script>
+	$(function() {
+		$("#input1").click(function() {
+			var nr=$("#t1").val();
+			$.getJSON('http://192.168.51.30:8080/php/add.php?callback=?',{"val":nr,"rand":new Date().getTime()},function(data) {
+					$("ul").append("<li mainId='"+data.mainId+"'><span>" + nr + "</span><span class='close'>X</span></li>");
+			});
+
+			$("ul").on('click', ".close", function() {
+				$(this).parent().remove();
+			});
+		});
+		$("#input2").click(function() {
+				$.getJSON('http://192.168.51.30:8080/php/loadPage.php?num=1&callback=?',{"rand":new Date().getTime()},function(data) {
+					$("ul li").each(function(i){
+						$("ul").append("<li mainId='"+data[i].mainId+"'><span>"+data[i].text+"</span><span class='close'>X</span></li>");
+						if(data[i].mainId.length>=4){
+							$("#input2").val("没有更多了").attr("disabled","disabled");
+						}
+					})
+				});
+			});
+	});
+</script>
+</head>
+
+<body>
+<textarea id="t1"></textarea>
+<input id="input1" type="button" value="发布">
+<ul>
+	<li mainId="11111"><span>1</span> <span class="close">X</span></li>
+    <li mainId="22222"><span>2</span> <span class="close">X</span></li>
+    <li mainId="333333"><span>3</span> <span class="close">X</span></li>
+</ul>
+<input id="input2" type="button" value="载入更多">
+</body>
+</html>
