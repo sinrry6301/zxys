@@ -139,7 +139,7 @@
 				var now = 0;
 				var num=0;
 				clearInterval(timers);
-				timers=setInterval(goon,1000);
+				timers=setInterval(goon,3000);
 				$uli.slice(1).each(function() {
 					$(this).css("top", -$liH);
 				});
@@ -162,7 +162,7 @@
 					},this),500);
 				});
 				$oli.mouseout(function() {
-					timers=setInterval(goon,1000);
+					timers=setInterval(goon,3000);
 				});
 				function goon(){
 						if(num==$oli.length-1){
