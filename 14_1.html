@@ -46,7 +46,9 @@
 				width: 470px;
 				height: 150px;
 				overflow: hidden;
-				/*position:absolute;left:0;top:0;*/
+				position:absolute;
+				left:0;
+				top:0;
 			}
 			
 			ol {
@@ -130,20 +132,56 @@
 				//和前一个index比较，如果比他小，就重新定位到上面+往下跑
 
 				var $oli = $("ol li");
-				var $uli=$("ul li");
-				var num = 0;
+				var $uli = $("ul li");
+				var $liH = $("ul li").height();
 				var timer = null;
-				var temp = 0;
-
-				$oli.mouseover(function() {
-
-					 $uli.animate({
-						top: -$("#box").height() * ($(this).index())
-					}, 1000);
-					
-					$(this).attr("class", "active").siblings("li").attr("class", "");
-
+				var timers=null;
+				var now = 0;
+				var num=0;
+				clearInterval(timers);
+				timers=setInterval(goon,1000);
+				$uli.slice(1).each(function() {
+					$(this).css("top", -$liH);
 				});
+				$oli.mouseover(function() {
+					clearTimeout(timer);
+					clearTimeout(timers);
+					timer=setTimeout($.proxy(function(){
+						//$.proxy 方法接受一个已有的函数，并返回一个带特定上下文的新的函数,该方法通常用于向上下文指向不同对象的元素添加事件。
+						num=$(this).index();
+						$(this).attr("class", "active").siblings("li").attr("class", "");
+						if(now < num){
+							$uli.eq(num).css("top", $liH)
+							$uli.eq(now).animate({top:-$liH},500);
+						}else if(now > num){
+							$uli.eq(num).css("top", -$liH)
+							$uli.eq(now).animate({top:$liH},500);
+						}
+						$uli.eq(num).animate({top: 0},500);
+						now=num;
+					},this),500);
+				});
+				$oli.mouseout(function() {
+					timers=setInterval(goon,1000);
+				});
+				function goon(){
+						if(num==$oli.length-1){
+							num=0;
+						}else{
+							num++;
+						}
+						$oli.eq(num).attr("class", "active").siblings("li").attr("class", "");
+						if(now < num){
+							$uli.eq(num).css("top", $liH)
+							$uli.eq(now).animate({top:-$liH},500);
+						}else if(now > num){
+							$uli.eq(num).css("top", -$liH)
+							$uli.eq(now).animate({top:$liH},500);
+						}
+						$uli.eq(num).animate({top: 0},500);
+						now=num;
+						
+				}
 			})
 		</script>
 	</head>
