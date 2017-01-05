@@ -130,15 +130,17 @@
 				//和前一个index比较，如果比他小，就重新定位到上面+往下跑
 
 				var $oli = $("ol li");
+				var $uli=$("ul li");
 				var num = 0;
 				var timer = null;
 				var temp = 0;
 
-				$("ol").delegate("li", "mouseover", function() {
+				$oli.mouseover(function() {
 
-					$("ul").animate({
+					 $uli.animate({
 						top: -$("#box").height() * ($(this).index())
 					}, 1000);
+					
 					$(this).attr("class", "active").siblings("li").attr("class", "");
 
 				});
