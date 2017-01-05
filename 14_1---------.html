@@ -63,32 +63,43 @@ ol .active{ background:#f60; color:#fff;}
 //	}
 //})
 
-
 $(function(){
+	
+	//除了第一张，其余的重新进行定位
+	//和前一个index比较，如果比他大，就重新定位到下面+往上跑
+	//和前一个index比较，如果比他小，就重新定位到上面+往下跑
+	
 	var $oli=$("ol li");
 	var num=0;
 	var timer=null;
-	clearInterval(timer);
-	timer=setInterval(goon,2000);
+	var temp=0;
+//	clearInterval(timer);
+//	timer=setInterval(goon,2000);
 	$("ol").delegate("li","mouseover",function(){
-		clearInterval(timer);
-		$(this).attr("class","active").siblings("li").attr("class","");
-		$("ul").stop().animate({top:-$("#box").height()*($(this).index())},1000);
-		num=$(this).index();
-	});
-	$("ol").delegate("li","mouseout",function(){
-		timer=setInterval(goon,2000);
-	});
-	
-	function goon(){
-		if(num==$oli.length-1){
-			num=0;
-		}else{
-			num++;
+//		clearInterval(timer);
+		
+		if($(this).index()>temp){
+			$("ul").animate({top:-$("#box").height()*($(this).index())},1000);
+		}else if($(this).index()<temp){
+			$("ul").animate({top:$("#box").height()*($(this).index())},1000);
 		}
-		$("ul").stop().animate({top:-$("#box").height()*num},1000);
-		$oli.eq(num).attr("class","active").siblings("li").attr("class","");
-	}
+		temp++;
+		$(this).attr("class","active").siblings("li").attr("class","");
+//		num=$(this).index();
+	});
+//	$("ol").delegate("li","mouseout",function(){
+//		timer=setInterval(goon,2000);
+//	});
+	
+//	function goon(){
+//		if(num==$oli.length-1){
+//			num=0;
+//		}else{
+//			num++;
+//		}
+//		$("ul").stop().animate({top:-$("#box").height()*num},1000);
+//		$oli.eq(num).attr("class","active").siblings("li").attr("class","");
+//	}
 })
 
 </script>

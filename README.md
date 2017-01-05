@@ -1,4 +1,4 @@
-# zxys
+# zxys-JQ基础篇
 页面名称：
 <br/>1.html 着色方块
 <br/>2.html 显示隐藏
